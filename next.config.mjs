@@ -1,5 +1,18 @@
+
+// next.config.js
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
 
+const path = require('path');
 
-export default nextConfig;
+const nextConfig = {
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, './'),
+    };
+
+    return config;
+  },
+};
+
+module.exports = nextConfig;
